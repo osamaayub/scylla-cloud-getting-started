@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 app.get('/', (_, res) => {
     res.json({
-        message: 'Welcome to Scylla',
+        message: 'Welcome to Scylla 😉',
     });
 });
 
@@ -18,5 +18,5 @@ app.use(cors());
 app.use('/api', api);
 
 app.listen(PORT, () => {
-    console.log(`Listening to http://localhost:${PORT}`);
+    console.log(`Listening to http://localhost:${PORT} 🚀 🚀 🚀 `);
 });
