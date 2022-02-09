@@ -4,6 +4,10 @@ import { Form, InputGroup, Button, FormControl } from 'react-bootstrap';
 const AddItemForm = ({ onItemCreate }) => {
     const [newItem, setNewItem] = React.useState('');
 
+    const onItemChange = (e) => {
+        setNewItem(e.target.value);
+    };
+
     const createItem = (e) => {
         e.preventDefault();
         onItemCreate({ name: newItem });
@@ -14,9 +18,10 @@ const AddItemForm = ({ onItemCreate }) => {
             <InputGroup className='mb-3'>
                 <FormControl
                     value={newItem}
-                    onChange={(e) => setNewItem(e.target.value)}
+                    onChange={onItemChange}
                     type='text'
                     placeholder='New Item'
+                    y
                 />
                 <Button
                     type='submit'

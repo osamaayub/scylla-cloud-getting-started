@@ -16,15 +16,12 @@ function Item({ item, onItemUpdate, onItemDelete }) {
 
     return (
         <Row>
-            <Col xs={1} className='text-center'>
+            <Col xs={1}>
                 <Form>
                     <Form.Check type={'checkbox'} onClick={toggleCompletion} />
                 </Form>
             </Col>
-            <Col
-                xs={10}
-                className={`name ${item.completed ? 'completed' : ''}`}
-            >
+            <Col xs={10} className={`${item.completed ? 'completed' : ''}`}>
                 {item.name}
             </Col>
             <Col xs={1}>

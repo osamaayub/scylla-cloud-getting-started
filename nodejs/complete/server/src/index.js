@@ -1,12 +1,13 @@
 const express = require('express');
-const api = require('./api');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const api = require('./api');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
     res.json({
         message: 'Welcome to Scylla',
     });
@@ -14,9 +15,8 @@ app.get('/', (req, res) => {
 
 app.use(bodyParser.json());
 app.use(cors());
-
 app.use('/api', api);
 
 app.listen(PORT, () => {
-    console.log(`Listening to port ${PORT}`);
+    console.log(`Listening to http://localhost:${PORT}`);
 });

@@ -1,7 +1,8 @@
 const express = require('express');
-const todos = require('./items');
 
 const router = express.Router();
+
+const items = require('./items');
 
 router.get('/', (req, res) => {
     res.json({
@@ -9,6 +10,6 @@ router.get('/', (req, res) => {
     });
 });
 
-router.use('/items', todos);
+router.use('/items', items);
 
 module.exports = router;
