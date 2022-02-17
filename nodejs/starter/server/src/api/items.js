@@ -1,7 +1,4 @@
 const express = require('express');
-const cassandra = require('cassandra-driver');
-require('dotenv').config();
-
 const router = express.Router();
 
 // Create one item

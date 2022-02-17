@@ -1,34 +1,49 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import AddItemForm from './AddItemForm';
 import Item from './Item';
+import axios from 'axios';
+
+const PORT = 3001;
+const BASE_URL = `http://localhost:${PORT}/api/items`;
 
 const TodoList = () => {
     const [items, setItems] = useState([]);
 
+    useEffect(() => {
+        axios.get(BASE_URL).then((res) => setItems(res.data));
+    }, []);
+
     const onItemCreate = useCallback(
         (newItem) => {
-            setItems([...items, { ...newItem, id: items.length }]);
+            axios.post(BASE_URL, newItem).then((res) => {
+                setItems([...items, { ...newItem, id: res.itemId }]);
+            });
         },
         [items]
     );
 
     const onItemUpdate = useCallback(
         (item) => {
-            const index = items.findIndex((i) => i.id === item.id);
-            console.log(index);
-            setItems([
-                ...items.slice(0, index),
-                item,
-                ...items.slice(index + 1),
-            ]);
+            axios
+                .put(`${BASE_URL}/${item.id}`, { completed: item.completed })
+                .then(() => {
+                    const index = items.findIndex((i) => i.id === item.id);
+                    setItems([
+                        ...items.slice(0, index),
+                        item,
+                        ...items.slice(index + 1),
+                    ]);
+                });
         },
         [items]
     );
 
     const onItemDelete = useCallback(
         (item) => {
-            const index = items.findIndex((i) => i.id === item.id);
-            setItems([...items.slice(0, index), ...items.slice(index + 1)]);
+            axios.delete(`${BASE_URL}/${item.id}`).then(() => {
+                const index = items.findIndex((i) => i.id === item.id);
+                setItems([...items.slice(0, index), ...items.slice(index + 1)]);
+            });
         },
         [items]
     );

@@ -21,7 +21,6 @@ const AddItemForm = ({ onItemCreate }) => {
                     onChange={onItemChange}
                     type='text'
                     placeholder='New Item'
-                    y
                 />
                 <Button
                     type='submit'

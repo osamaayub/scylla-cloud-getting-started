@@ -13,8 +13,8 @@ app.get('/', (_, res) => {
     });
 });
 
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
 app.use('/api', api);
 
 app.listen(PORT, () => {
