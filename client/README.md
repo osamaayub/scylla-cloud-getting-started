@@ -2,6 +2,8 @@
 
 The client app is implemented with ReactJS and uses `axios` to send HTTP requests to the server app.
 
+[alt text](https://github.com/raoufchebri/getting-started/.img/master/todo-react-demo.gif?raw=true)
+
 ## Getting started
 
 Install the project dependencines using the following command:
