@@ -1,15 +1,8 @@
 const express = require('express');
 const cassandra = require('cassandra-driver');
-require('dotenv').config();
+const { getClientWithKeyspace } = require('../db');
 
-const { NODE_IP, DATA_CENTER, USERNAME, PASSWORD, KEYSPACE } = process.env;
-
-const cluster = new cassandra.Client({
-    contactPoints: [NODE_IP],
-    localDataCenter: DATA_CENTER,
-    credentials: { username: USERNAME, password: PASSWORD },
-    keyspace: KEYSPACE,
-});
+const cluster = getClientWithKeyspace();
 
 const router = express.Router();
 

@@ -1,0 +1,1 @@
+CREATE KEYSPACE IF NOT EXISTS todos WITH replication = { 'class': 'NetworkTopologyStrategy', 'replication_factor': '3' };
