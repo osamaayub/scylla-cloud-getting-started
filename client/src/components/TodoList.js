@@ -16,7 +16,7 @@ const TodoList = () => {
 
     const onItemCreate = useCallback(
         (newItem) => {
-            setItems([...items, { ...newItem, id: res.data.itemId }]);
+            setItems([...items, { ...newItem, id: items.length }]);
             // TODO: Uncomment the below after you implement the server
             // axios.post(BASE_URL, newItem);
         },
