@@ -17,7 +17,7 @@ USERNAME="scylla"
 PASSWORD="*************"
 DATA_CENTER="AWS_EAST_1"
 NODE_IP="235.109.32.27"
-KEYSPACE="todo"
+KEYSPACE="todos"
 ```
 
 In the project folder, for example `server/starter`, run the following command to install project dependencies:
