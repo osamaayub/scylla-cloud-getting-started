@@ -2,11 +2,6 @@
 
 This project walks you through the steps to create a backend service for a Todo app using NodeJS and ExpressJS.
 
-The project contains two folders:
-
--   end
--   starter
-
 ## Getting started
 
 Follow the instructions to [create a cluster on Scylla Cloud](../README.md).
@@ -20,7 +15,7 @@ NODE_IP="235.109.32.27"
 KEYSPACE="todos"
 ```
 
-In the project folder, for example `server/starter`, run the following command to install project dependencies:
+In the project folder, run the following command to install project dependencies:
 `npm install`
 
 Run `npm run dev` to start the app.
@@ -80,9 +75,6 @@ You can open [http://localhost:3001/api/items](http://localhost:3001/api/items) 
 At each step of implementing the CRUD operations, you can test the API using [Postman](https://www.postman.com/downloads/).
 
 ### Implmenting the app
-
-You can skip the below if you are using the `end` project.
-If you are using the `starter` project, follow the below steps to implement the CRUD operations and connect to a Scylla Cloud cluster.
 
 ## Connect to Scylla Cloud cluster
 

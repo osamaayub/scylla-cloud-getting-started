@@ -10,40 +10,39 @@ const TodoList = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        axios.get(BASE_URL).then((res) => setItems(res.data));
+        // TODO: Uncomment the below after you implement the server
+        // axios.get(BASE_URL).then((res) => setItems(res.data));
     }, []);
 
     const onItemCreate = useCallback(
         (newItem) => {
-            axios.post(BASE_URL, newItem).then((res) => {
-                setItems([...items, { ...newItem, id: res.data.itemId }]);
-            });
+            setItems([...items, { ...newItem, id: res.data.itemId }]);
+            // TODO: Uncomment the below after you implement the server
+            // axios.post(BASE_URL, newItem);
         },
         [items]
     );
 
     const onItemUpdate = useCallback(
         (item) => {
-            axios
-                .put(`${BASE_URL}/${item.id}`, { completed: item.completed })
-                .then(() => {
-                    const index = items.findIndex((i) => i.id === item.id);
-                    setItems([
-                        ...items.slice(0, index),
-                        item,
-                        ...items.slice(index + 1),
-                    ]);
-                });
+            const index = items.findIndex((i) => i.id === item.id);
+            setItems([
+                ...items.slice(0, index),
+                item,
+                ...items.slice(index + 1),
+            ]);
+            // TODO: Uncomment the below after you implement the server
+            // axios.put(`${BASE_URL}/${item.id}`, { completed: item.completed });
         },
         [items]
     );
 
     const onItemDelete = useCallback(
         (item) => {
-            axios.delete(`${BASE_URL}/${item.id}`).then(() => {
-                const index = items.findIndex((i) => i.id === item.id);
-                setItems([...items.slice(0, index), ...items.slice(index + 1)]);
-            });
+            const index = items.findIndex((i) => i.id === item.id);
+            setItems([...items.slice(0, index), ...items.slice(index + 1)]);
+            // TODO: Uncomment the below after you implement the server
+            // axios.delete(`${BASE_URL}/${item.id}`);
         },
         [items]
     );

@@ -11,9 +11,7 @@ Install the project dependencines using the following command:
 
 Run the application using `npm start`.
 
-The `starter` project doesn't require a backend. You can add, update and delete items, however they are not saved and will disappear when you refresh the browser.
-
-If you want to use the `end` project, you will first need to [implement the backend](../server/nodejs/README.md).
+You will first need to [implement the backend](../server/nodejs/README.md).
 
 ## Using the starter project
 
