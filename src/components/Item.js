@@ -18,7 +18,11 @@ function Item({ item, onItemUpdate, onItemDelete }) {
         <Row>
             <Col xs={1}>
                 <Form>
-                    <Form.Check type={'checkbox'} onClick={toggleCompletion} />
+                    <Form.Check
+                        type={'checkbox'}
+                        onChange={toggleCompletion}
+                        checked={item.completed}
+                    />
                 </Form>
             </Col>
             <Col xs={10} className={`${item.completed ? 'completed' : ''}`}>

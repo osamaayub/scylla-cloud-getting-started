@@ -3,22 +3,22 @@ import AddItemForm from './AddItemForm';
 import Item from './Item';
 import axios from 'axios';
 
-const PORT = 3001;
-const BASE_URL = `http://localhost:${PORT}/api/items`;
+const PORT = 4242;
+const BASE_URL = `http://localhost:${PORT}`;
 
 const TodoList = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        // TODO: Uncomment the below after you implement the server
-        // axios.get(BASE_URL).then((res) => setItems(res.data));
+        axios
+            .get(`${BASE_URL}/get-all-items`)
+            .then((res) => setItems(res.data));
     }, []);
 
     const onItemCreate = useCallback(
         (newItem) => {
             setItems([...items, { ...newItem, id: items.length }]);
-            // TODO: Uncomment the below after you implement the server
-            // axios.post(BASE_URL, newItem);
+            axios.post(`${BASE_URL}/create-item`, newItem);
         },
         [items]
     );
@@ -31,8 +31,9 @@ const TodoList = () => {
                 item,
                 ...items.slice(index + 1),
             ]);
-            // TODO: Uncomment the below after you implement the server
-            // axios.put(`${BASE_URL}/${item.id}`, { completed: item.completed });
+            axios.put(`${BASE_URL}/update-item/${item.id}`, {
+                completed: item.completed,
+            });
         },
         [items]
     );
@@ -41,8 +42,7 @@ const TodoList = () => {
         (item) => {
             const index = items.findIndex((i) => i.id === item.id);
             setItems([...items.slice(0, index), ...items.slice(index + 1)]);
-            // TODO: Uncomment the below after you implement the server
-            // axios.delete(`${BASE_URL}/${item.id}`);
+            axios.delete(`${BASE_URL}/delete-item/${item.id}`);
         },
         [items]
     );
